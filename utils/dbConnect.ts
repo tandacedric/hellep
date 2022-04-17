@@ -1,5 +1,7 @@
 /* This is a database connection function*/
 import mongoose from 'mongoose'
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const connection = {} /* creating connection object*/
 
