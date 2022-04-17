@@ -36,7 +36,7 @@ const Surprise: NextPage = () => {
         let message = `🙌 Une surprise spéciale pour toi de la part de 👉 ${formName} 👈  depuis la ville de 👉 ${formCity} 👈 
         Clique ici pour voir
        ‼️👇👇👇👇‼️
-       https://hellep.vercel.app/surprise?n=${formName}&c=${formCity}`;
+       https://hellep.vercel.app/surprise?n=${formName.trim()}&c=${formCity.trim()}`;
         console.log(message);
 
         let url = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
