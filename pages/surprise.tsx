@@ -9,6 +9,23 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import ShareIcon from '@mui/icons-material/Share';
+import Lottie from "lottie-react";
+import { useLottie } from "lottie-react";
+
+import groovyWalkAnimation from "../assets/53154-happy-easter-holiday.json";
+
+
+const Example = () => {
+    const options = {
+      animationData: groovyWalkAnimation,
+      loop: true,
+      autoplay: true,
+    };
+  
+    const { View } = useLottie(options);
+  
+    return View;
+  };
 
 const Surprise: NextPage = () => {
     const router = useRouter()
@@ -43,11 +60,12 @@ const Surprise: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
-                <iframe className={styles.iframe} src="https://embed.lottiefiles.com/animation/53154"></iframe>
-
+                {/* <iframe className={styles.iframe} src="https://embed.lottiefiles.com/animation/53154"></iframe> */}
+                <div className={styles.iframe}> <Example/></div>
                 <h5 className={styles.message}>
-                    Envoyé par <b>{n}</b>, de <b>{c}</b>
+                    Envoyé par <span className={styles.name}>{n}</span> depuis <span className={styles.city}>{c}</span> pour vous souhaiter une joyeuse fête de Pâques.
                 </h5>
+                
                 <div>
                     <Box
                         component="form"
@@ -58,11 +76,11 @@ const Surprise: NextPage = () => {
                         autoComplete="on"
                     >
                         <div>
-                            <span className={styles.footerMessage}>Souhaitez aussi bonne fête de pâques à mes contacts.</span>
+                            <span className={styles.footerMessage}>Souhaiter une bonne fête de pâques 2022 à mes contacts.</span>
                         </div>
                         <div className={styles.formInline}>
                             <TextField
-                                label="Mon nom"
+                                label="Mon nom  / My name"
                                 id="outlined-size-small"
                                 defaultValue="Small"
                                 size="small"
@@ -70,7 +88,7 @@ const Surprise: NextPage = () => {
                                 onChange={handleChangeFormName}
                             />
                             <TextField
-                                label="Ma ville"
+                                label="Ma ville / My city"
                                 id="outlined-size-small"
                                 defaultValue="Small"
                                 size="small"
@@ -79,7 +97,7 @@ const Surprise: NextPage = () => {
                                 onChange={handleChangeFormCity}
 
                             />
-                            <Button onClick={handleClick} disabled={!formName || !formCity} startIcon={<ShareIcon />} variant="outlined">Partager</Button>
+                            <Button onClick={handleClick} disabled={!formName || !formCity} startIcon={<ShareIcon />} variant="outlined">Partager / Share</Button>
 
                         </div>
 

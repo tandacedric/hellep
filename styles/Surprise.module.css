@@ -6,11 +6,23 @@
   font-size: 2rem;
   text-align: center;
   color: rgb(29, 28, 28);
+  font-weight: 200  !important;
+}
+.name{
+  color:#c653c9;
+  text-decoration: underline;
+}
+.city{
+  color:#6e51be;
+  text-decoration: underline;
 }
 .iframe {
   width: 100%;
-  min-height: 80vh;
+  max-height: 80vh;
   border: none;
+}
+.iframe  svg{
+  max-height: 80vh;
 }
 .container {
   /*padding: 0 2rem;*/
