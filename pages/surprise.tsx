@@ -93,7 +93,7 @@ const Surprise: NextPage = () => {
                         </div>
                         <div className={styles.formInline}>
                             <TextField
-                                label="Mon nom  / My name"
+                                label="Mon nom"
                                 id="outlined-size-small"
                                 defaultValue="Small"
                                 size="small"
@@ -101,7 +101,7 @@ const Surprise: NextPage = () => {
                                 onChange={handleChangeFormName}
                             />
                             <TextField
-                                label="Ma ville / My city"
+                                label="Ma ville"
                                 id="outlined-size-small"
                                 defaultValue="Small"
                                 size="small"
@@ -110,7 +110,7 @@ const Surprise: NextPage = () => {
                                 onChange={handleChangeFormCity}
 
                             />
-                            <Button onClick={handleClick} disabled={!formName || !formCity} startIcon={<ShareIcon />} variant="outlined">Partager / Share</Button>
+                            <Button onClick={handleClick} disabled={!formName || !formCity} startIcon={<ShareIcon />} variant="outlined">Partager</Button>
 
                         </div>
 
