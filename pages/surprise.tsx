@@ -17,31 +17,44 @@ import groovyWalkAnimation from "../assets/53154-happy-easter-holiday.json";
 
 const Example = () => {
     const options = {
-      animationData: groovyWalkAnimation,
-      loop: true,
-      autoplay: true,
+        animationData: groovyWalkAnimation,
+        loop: true,
+        autoplay: true,
     };
-  
+
     const { View } = useLottie(options);
-  
+
     return View;
-  };
+};
 
 const Surprise: NextPage = () => {
     const router = useRouter()
     const { n, c } = router.query
     const [formName, setFormName] = React.useState('');
     const [formCity, setFormCity] = React.useState('');
-    function handleClick() {
+    async function handleClick()  {
         let message = `🙌 Une surprise spéciale pour toi de la part de 👉 ${formName} 👈 
         Clique ici pour voir
        ‼️👇👇👇👇‼️
        https://hellep.vercel.app/surprise?n=${formName}&c=${formCity}`;
-       console.log(message);
-         
+        console.log(message);
+
         let url = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
         console.log(url);
-        window.open(url,'_blank');
+
+        try {
+            await fetch('/api/surprise', {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json",
+                    'Content-Type': "application/json",
+                },
+                body: JSON.stringify({name:formName, city: formCity, created: (new Date()).toString()}),
+            })
+            window.open(url, '_blank');
+        } catch (error) {
+            console.log("Error", error);
+        }
         console.log("share")
     }
     const handleChangeFormName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,11 +74,11 @@ const Surprise: NextPage = () => {
 
             <main className={styles.main}>
                 {/* <iframe className={styles.iframe} src="https://embed.lottiefiles.com/animation/53154"></iframe> */}
-                <div className={styles.iframe}> <Example/></div>
+                <div className={styles.iframe}> <Example /></div>
                 <h5 className={styles.message}>
                     Envoyé par <span className={styles.name}>{n}</span> depuis <span className={styles.city}>{c}</span> pour vous souhaiter une joyeuse fête de Pâques.
                 </h5>
-                
+
                 <div>
                     <Box
                         component="form"
