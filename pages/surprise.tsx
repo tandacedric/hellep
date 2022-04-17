@@ -12,9 +12,27 @@ import ShareIcon from '@mui/icons-material/Share';
 
 const Surprise: NextPage = () => {
     const router = useRouter()
-    const { name } = router.query
-
-
+    const { n, c } = router.query
+    const [formName, setFormName] = React.useState('');
+    const [formCity, setFormCity] = React.useState('');
+    function handleClick() {
+        let message = `🙌 Une surprise spéciale pour toi de la part de 👉 ${formName} 👈 
+        Clique ici pour voir
+       ‼️👇👇👇👇‼️
+       https://hellep.vercel.app/surprise?n=${formName}&c=${formCity}`;
+       console.log(message);
+         
+        let url = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+        console.log(url);
+        window.open(url,'_blank');
+        console.log("share")
+    }
+    const handleChangeFormName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFormName(event.target.value);
+    };
+    const handleChangeFormCity = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFormCity(event.target.value);
+    };
 
     return (
         <div className={styles.container}>
@@ -25,41 +43,50 @@ const Surprise: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
+                <iframe className={styles.iframe} src="https://embed.lottiefiles.com/animation/53154"></iframe>
+
                 <h5 className={styles.message}>
-                    Salut <b>{name}</b>,je te souhaite une très bonne<a href="https://nextjs.org"> fête de Pâques</a> de notre Seigneur Jesus Christ à toi  à toute ta famille. 
-                    <b/>Prends bien soin de toi. 
+                    Envoyé par <b>{n}</b>, de <b>{c}</b>
                 </h5>
+                <div>
+                    <Box
+                        component="form"
+                        sx={{
+                            '& .MuiTextField-root': { m: 1, width: '25ch' },
+                        }}
+                        noValidate
+                        autoComplete="on"
+                    >
+                        <div>
+                            <span className={styles.footerMessage}>Souhaitez aussi bonne fête de pâques à mes contacts.</span>
+                        </div>
+                        <div className={styles.formInline}>
+                            <TextField
+                                label="Mon nom"
+                                id="outlined-size-small"
+                                defaultValue="Small"
+                                size="small"
+                                value={formName}
+                                onChange={handleChangeFormName}
+                            />
+                            <TextField
+                                label="Ma ville"
+                                id="outlined-size-small"
+                                defaultValue="Small"
+                                size="small"
 
+                                value={formCity}
+                                onChange={handleChangeFormCity}
+
+                            />
+                            <Button onClick={handleClick} disabled={!formName || !formCity} startIcon={<ShareIcon />} variant="outlined">Partager</Button>
+
+                        </div>
+
+                    </Box>
+                </div>
             </main>
-            <div>
-                <Box
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, width: '25ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <div className={styles.footer}>
-                        <TextField
-                            label="Mon nom"
-                            id="outlined-size-small"
-                            defaultValue="Small"
-                            size="small"
-                        />
-                        <TextField
-                            label="Ma ville"
-                            id="outlined-size-small"
-                            defaultValue="Small"
-                            size="small"
-                            
-                        />
-                        <Button startIcon={<ShareIcon />} variant="outlined">Partager</Button>
 
-                    </div>
-                    
-                </Box>
-            </div>
             <footer className={styles.footer}>
 
                 <div><a

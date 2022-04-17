@@ -7,21 +7,28 @@
   text-align: center;
   color: rgb(29, 28, 28);
 }
-
+.iframe {
+  width: 100%;
+  min-height: 80vh;
+  border: none;
+}
 .container {
-  padding: 0 2rem;
+  /*padding: 0 2rem;*/
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+  /*padding: 4rem 0;*/
+  
+}
+.footerMessage {
   display: flex;
-  flex-direction: column;
+  flex: 1;
+  padding: 1rem 0 0.5rem;
+  text-align: center;
   justify-content: center;
   align-items: center;
 }
-
 .footer {
   display: flex;
   flex: 1;
@@ -31,6 +38,13 @@
   align-items: center;
 }
 
+.formInline {
+  display: flex;
+  flex: 1;
+  padding: 1rem 0;
+  justify-content: center;
+  align-items: center;
+}
 .footer a {
   display: flex;
   justify-content: center;
