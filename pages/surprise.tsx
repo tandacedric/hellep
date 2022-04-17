@@ -33,7 +33,7 @@ const Surprise: NextPage = () => {
     const [formName, setFormName] = React.useState('');
     const [formCity, setFormCity] = React.useState('');
     async function handleClick()  {
-        let message = `🙌 Une surprise spéciale pour toi de la part de 👉 ${formName} 👈 
+        let message = `🙌 Une surprise spéciale pour toi de la part de 👉 ${formName} 👈  depuis la ville de 👉 ${formCity} 👈 
         Clique ici pour voir
        ‼️👇👇👇👇‼️
        https://hellep.vercel.app/surprise?n=${formName}&c=${formCity}`;
